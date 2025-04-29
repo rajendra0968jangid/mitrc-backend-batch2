@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 export let dbConnect = async () => {
 
-  await mongoose.connect("mongodb://127.0.0.1:27017/mybackend")
+  await mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log("connected"))
     .catch(() => console.log("error"));
     
