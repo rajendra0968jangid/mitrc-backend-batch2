@@ -3,9 +3,10 @@ const app = express()
 import {dbConnect} from './config/db.js'
 import 'dotenv/config'
 const port =  process.env.PORT || 3000
-
+import {userRouter} from './routes/user.route.js'
 dbConnect();
 
+app.use("/user",userRouter);
 app.get('/', (req, res) => {
   res.send('Hello!')
 })
