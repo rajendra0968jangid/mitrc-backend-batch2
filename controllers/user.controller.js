@@ -6,7 +6,7 @@ export let createUser = (req, res) => {
 
 export let getUserById = (req, res) => {
   //console.log(req.params.id);
-  res.send("get user by id" + req.params.id);
+  res.send("get user by id CHECK" + req.params.id);
 };
 
 export let getAllUser = (req, res) => {
