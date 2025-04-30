@@ -1,12 +1,32 @@
 import { userModel } from "../models/user.model.js";
 
-export let createUser = (req, res) => {
-  res.send("create user");
+import { response } from "../utils/response.js";
+import bcrypt from "bcrypt";
+export let createUser = async (req, res) => {
+  //
+  try {
+    let { name, email, password, phone, isVerified } = req.body;
+    console.log(name);
+    //
+    password = await bcrypt.hash(password, 10);
+
+    const newUser = new userModel({ name, email, password, phone, isVerified });
+    const userData = await newUser.save();
+
+    return response(res, userData, "user created success");
+  } catch (error) {
+    return response(res, null, error.message, false, 500);
+  }
 };
 
-export let getUserById = (req, res) => {
-  //console.log(req.params.id);
-  res.send("get user by id CHECK" + req.params.id);
+export let getUserById = async (req, res) => {
+  try {
+    let userId = req.params.id;
+    let userData = await userModel.findById(userId);
+    return response(res, userData, "user data get success");
+  } catch (error) {
+    return response(res, null, error.message, false, 500);
+  }
 };
 
 export let getAllUser = (req, res) => {

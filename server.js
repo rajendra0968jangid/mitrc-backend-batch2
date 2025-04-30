@@ -4,6 +4,11 @@ import {dbConnect} from './config/db.js'
 import 'dotenv/config'
 const port =  process.env.PORT || 3000
 import {userRouter} from './routes/user.route.js'
+
+import bodyParser from 'body-parser'
+const jsonParser = bodyParser.json()
+app.use(jsonParser)
+
 dbConnect();
 
 app.use("/user",userRouter);
