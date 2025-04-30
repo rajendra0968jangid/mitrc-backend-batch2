@@ -29,8 +29,13 @@ export let getUserById = async (req, res) => {
   }
 };
 
-export let getAllUser = (req, res) => {
-  res.send("get all user");
+export let getAllUser = async(req, res) => {
+  try {
+    let userData = await userModel.find();
+    return response(res, userData, "All user data get success");
+  } catch (error) {
+    return response(res, null, error.message, false, 500);
+  }
 };
 
 export let userUpdateById = (req, res) => {
