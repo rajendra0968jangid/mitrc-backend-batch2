@@ -5,9 +5,11 @@ import {
   getAllUser,
   userUpdateById,
   userDeleteById,
+  loginUser
 } from "../controllers/user.controller.js";
 const userRouter = express.Router();
 
+userRouter.post("/login-user",loginUser);
 userRouter.post("/create-user", createUser);
 userRouter.get("/get-user-byid/:id", getUserById);
 userRouter.get("/get-all-user", getAllUser);
