@@ -6,8 +6,9 @@ import {
   getAllproduct,
   getproductById,
 } from "../controllers/product.controller.js";
+import {upload} from '../middleware/uploads.js'
 
-productRouter.post("/create-product", authMiddleWare, createproduct);
+productRouter.post("/create-product", upload.single("image"),authMiddleWare, createproduct);
 productRouter.get("/get-product-byid/:id", getproductById);
 productRouter.get("/get-all-product", getAllproduct);
 

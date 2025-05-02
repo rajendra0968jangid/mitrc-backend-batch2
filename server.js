@@ -12,6 +12,8 @@ app.use(jsonParser);
 
 dbConnect();
 
+app.use("/image", express.static("uploads"));
+
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 
