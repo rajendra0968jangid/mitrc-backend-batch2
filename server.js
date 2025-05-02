@@ -9,6 +9,8 @@ import bodyParser from "body-parser";
 import { productRouter } from "./routes/product.route.js";
 const jsonParser = bodyParser.json();
 app.use(jsonParser);
+import cors from 'cors'
+app.use(cors());
 
 dbConnect();
 
