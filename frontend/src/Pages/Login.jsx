@@ -27,7 +27,7 @@ function Login() {
       body: JSON.stringify(formData)
     })
     let jsonResponse = await response.json();
-    console.log(jsonResponse);
+    localStorage.setItem("token", jsonResponse?.data?.token)
   }
 
   return (
