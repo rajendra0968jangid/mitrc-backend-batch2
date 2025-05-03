@@ -28,6 +28,8 @@ function Login() {
     })
     let jsonResponse = await response.json();
     localStorage.setItem("token", jsonResponse?.data?.token)
+    alert(jsonResponse?.message)
+    navigate("/product")
   }
 
   return (
